@@ -1,0 +1,12 @@
+C:\J2S\Shared\bin\Debug\net6.0\J2S.Shared.deps.json
+C:\J2S\Shared\bin\Debug\net6.0\J2S.Shared.dll
+C:\J2S\Shared\bin\Debug\net6.0\J2S.Shared.pdb
+C:\J2S\Shared\obj\Debug\net6.0\J2S.Shared.csproj.AssemblyReference.cache
+C:\J2S\Shared\obj\Debug\net6.0\J2S.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\J2S\Shared\obj\Debug\net6.0\J2S.Shared.AssemblyInfoInputs.cache
+C:\J2S\Shared\obj\Debug\net6.0\J2S.Shared.AssemblyInfo.cs
+C:\J2S\Shared\obj\Debug\net6.0\J2S.Shared.csproj.CoreCompileInputs.cache
+C:\J2S\Shared\obj\Debug\net6.0\J2S.Shared.dll
+C:\J2S\Shared\obj\Debug\net6.0\refint\J2S.Shared.dll
+C:\J2S\Shared\obj\Debug\net6.0\J2S.Shared.pdb
+C:\J2S\Shared\obj\Debug\net6.0\ref\J2S.Shared.dll
