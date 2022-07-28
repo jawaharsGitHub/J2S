@@ -1,0 +1,65 @@
+@page "/users"
+@using J2S.Shared
+@inject HttpClient Http
+
+<PageTitle>Users</PageTitle>
+
+<h1>User Details</h1>
+<div class="row">
+    <div class="col col-6">
+        <input @bind-value="newUser.Name" placeholder="username" class="form-control mb-3"/>
+        <input @bind-value="newUser.Email" placeholder="Email" class="form-control mb-3"/>
+        <input @bind-value="newUser.Password" placeholder="Password" class="form-control mb-3"/>
+        <button class="btn btn-block btn-primary" @onclick="SubmitUser">Create</button>
+    </div>
+
+    <div class="col col-6">
+
+
+<p>Thisis about users</p>
+
+@if (users == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>UserId</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in users)
+            {
+                <tr>
+                    <td>@user.UserId</td>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.Password</td>
+                    <td><button class="btn btn-sm btn-primary">Edit</button></td>
+                    <td><button class="btn btn-sm btn-secondary">Delete</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+</div>
+
+</div>
+
+@code {
+    private User[]? users;
+    private User newUser = new User();
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await Http.GetFromJsonAsync<User[]>("api/User");
+    }
+}

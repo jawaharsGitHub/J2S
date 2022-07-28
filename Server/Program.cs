@@ -17,10 +17,10 @@ builder.Services.AddDbContext<UserContext>(options => {
  });
 
 
-builder.Services.AddSwaggerGen(opt => opt.SwaggerDoc("j2s-v1", new Microsoft.OpenApi.Models.OpenApiInfo() 
+builder.Services.AddSwaggerGen(opt => opt.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo() 
 {
-    Version = "v0.1",
-    Title = "J2S-v0.1"
+    Version = "v1",
+    Title = "J2S-v1"
 
 }));
 var app = builder.Build();
@@ -42,7 +42,7 @@ app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 app.UseSwagger();
-app.UseSwaggerUI(opt => opt.SwaggerEndpoint("/swagger/v0.1/swagger.json", "J2S v0.1"));
+app.UseSwaggerUI(opt => opt.SwaggerEndpoint("/swagger/v1/swagger.json", "J2S-v1"));
 
 app.UseRouting();
 
