@@ -7,59 +7,98 @@
 <h1>User Details</h1>
 <div class="row">
     <div class="col col-6">
-        <input @bind-value="newUser.Name" placeholder="username" class="form-control mb-3"/>
-        <input @bind-value="newUser.Email" placeholder="Email" class="form-control mb-3"/>
-        <input @bind-value="newUser.Password" placeholder="Password" class="form-control mb-3"/>
-        <button class="btn btn-block btn-primary" @onclick="SubmitUser">Create</button>
+        <input @bind-value="newUser.Name" placeholder="username" class="form-control mb-3" />
+        <input @bind-value="newUser.Email" placeholder="Email" class="form-control mb-3" />
+        <input @bind-value="newUser.Password" placeholder="Password" class="form-control mb-3" />
+        <button class="btn btn-block btn-primary" @onclick="SubmitUser">@btnText</button>
     </div>
 
     <div class="col col-6">
 
 
-<p>Thisis about users</p>
+        <p>This is about users</p>
 
-@if (users == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>UserId</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var user in users)
-            {
-                <tr>
-                    <td>@user.UserId</td>
-                    <td>@user.Name</td>
-                    <td>@user.Email</td>
-                    <td>@user.Password</td>
-                    <td><button class="btn btn-sm btn-primary">Edit</button></td>
-                    <td><button class="btn btn-sm btn-secondary">Delete</button></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-</div>
+        @if (users == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>UserId</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in users)
+                    {
+                        <tr>
+                            <td>@user.UserId</td>
+                            <td>@user.Name</td>
+                            <td>@user.Email</td>
+                            <td>@user.Password</td>
+                            <td><button class="btn btn-sm btn-primary" @onclick="@(()=>GetUser(@user))">Edit</button></td>
+                            <td><button class="btn btn-sm btn-secondary" @onclick="@(()=>DeleteUser(@user))">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
 
 </div>
 
 @code {
-    private User[]? users;
+    private List<User> users = new  List<User>();
     private User newUser = new User();
+    private bool isEdit = false;
+    //private string btnText = "Create";
+    //[Parameter]
+    public string btnText  { get; set; }
+
+    //public string ButtonText => IsEditing ? "Editing..." : "Edit";
+   
 
     protected override async Task OnInitializedAsync()
     {
-        users = await Http.GetFromJsonAsync<User[]>("api/User");
+        users = await Http.GetFromJsonAsync<List<User>>("api/User");
+    }
+
+    private async Task SubmitUser()
+    {
+        if (isEdit == false)
+        {
+            await Http.PostAsJsonAsync<User>("api/user", newUser);
+        }
+        else
+        {
+            await Http.PutAsJsonAsync<User>("api/user", newUser);
+            isEdit = false;
+            
+        }
+        btnText = "Create";
+        await OnInitializedAsync();
+
+    }
+
+    private async Task DeleteUser(User user)
+    {
+        await Http.DeleteAsync($"api/user/{user.UserId}");
+        await OnInitializedAsync();
+
+    }
+
+    private async Task GetUser(User user)
+    {
+        newUser = await Http.GetFromJsonAsync<User>($"api/user/{user.UserId}");
+        isEdit = true;
+        btnText = "Update";
     }
 }

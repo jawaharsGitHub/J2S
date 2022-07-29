@@ -33,19 +33,21 @@ namespace J2S.Server.Controllers
         }
 
         [HttpGet("{userId}")]
-        public List<User> ReadById(int userId)
+        public User ReadById(int userId)
         {
-            return  _userContext.Users.Where(w => w.UserId == userId).ToList();
+            return  _userContext.Users.Where(w => w.UserId == userId).ToList().First();
         }
 
-        [HttpPut("{userId}")]
-        public  User Update(int userId, User user)
+        [HttpPut("")]
+        public  User Update(User user)
         {
-            var u = _userContext.Users.First(f => f.UserId == userId);
+            var u = _userContext.Users.First(f => f.UserId == user.UserId);
             u.Name = user.Name;
             u.Email= user.Email;
+            u.Password= user.Password;
+            _userContext.SaveChanges();
             return u;
-            //u.Name = user.Name;
+            
         }
 
         [HttpDelete("{userId}")]
