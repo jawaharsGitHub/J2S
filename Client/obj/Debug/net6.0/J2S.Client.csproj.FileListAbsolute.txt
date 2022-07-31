@@ -808,8 +808,6 @@ C:\J2S\Client\obj\Debug\net6.0\build-gz\O4VeXhK0.gz
 C:\J2S\Client\obj\Debug\net6.0\build-gz\nYd0sU4K.gz
 C:\J2S\Client\obj\Debug\net6.0\build-gz\1j80bUFb.gz
 C:\J2S\Client\obj\Debug\net6.0\build-gz\lHLSayHd.gz
-C:\J2S\Client\obj\Debug\net6.0\build-gz\UVP0j+Ra.gz
-C:\J2S\Client\obj\Debug\net6.0\build-gz\BEw9rGfP.gz
 C:\J2S\Client\obj\Debug\net6.0\build-gz\4q80Xcrx.gz
 C:\J2S\Client\obj\Debug\net6.0\blazor.boot.json
 C:\J2S\Client\obj\Debug\net6.0\staticwebassets.build.json
@@ -825,3 +823,5 @@ C:\J2S\Client\obj\Debug\net6.0\J2S.Client.dll
 C:\J2S\Client\obj\Debug\net6.0\refint\J2S.Client.dll
 C:\J2S\Client\obj\Debug\net6.0\J2S.Client.pdb
 C:\J2S\Client\obj\Debug\net6.0\ref\J2S.Client.dll
+C:\J2S\Client\obj\Debug\net6.0\build-gz\UVP0j+Ra.gz
+C:\J2S\Client\obj\Debug\net6.0\build-gz\BEw9rGfP.gz
